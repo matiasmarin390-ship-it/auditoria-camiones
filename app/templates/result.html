@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultado de carga</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f7fb;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+        }
+
+        h1 {
+            color: #173b6c;
+        }
+
+        .ok {
+            background: #e8f7e8;
+            color: #146c2e;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .box {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 12px;
+            border-left: 4px solid #0d6efd;
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 15px;
+            text-decoration: none;
+            color: white;
+            background: #0d6efd;
+            padding: 10px 16px;
+            border-radius: 8px;
+        }
+
+        a:hover {
+            background: #0b5ed7;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Archivos cargados correctamente</h1>
+
+        <div class="ok">
+            Los archivos fueron recibidos por la aplicación.
+        </div>
+
+        <div class="box">
+            <strong>Histórico Excel:</strong> {{ historico_filename }}
+        </div>
+
+        <div class="box">
+            <strong>PDF hoja de ruta:</strong> {{ pdf_filename }}
+        </div>
+
+        <div class="box">
+            <strong>Ruta guardada Excel:</strong> {{ historico_path }}
+        </div>
+
+        <div class="box">
+            <strong>Ruta guardada PDF:</strong> {{ pdf_path }}
+        </div>
+
+        <a href="/">Volver</a>
+    </div>
+</body>
+</html>
