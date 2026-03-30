@@ -1,1 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auditoría de Camiones</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f7fb;
+            margin: 0;
+            padding: 0;
+        }
 
+        .container {
+            max-width: 700px;
+            margin: 50px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+        }
+
+        h1 {
+            text-align: center;
+            color: #173b6c;
+        }
+
+        p {
+            text-align: center;
+            color: #555;
+        }
+
+        .field {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #173b6c;
+        }
+
+        input[type="file"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            background: #fff;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            background: #0d6efd;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #0b5ed7;
+        }
+
+        .flash {
+            background: #ffe5e5;
+            color: #a10000;
+            padding: 10px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Auditoría de Camiones</h1>
+        <p>Subí el histórico del camión y la hoja de ruta en PDF.</p>
+
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="flash">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <form action="/audit" method="POST" enctype="multipart/form-data">
+            <div class="field">
+                <label for="historico_file">Histórico del camión (Excel)</label>
+                <input type="file" name="historico_file" id="historico_file" accept=".xlsx,.xls" required>
+            </div>
+
+            <div class="field">
+                <label for="pdf_file">Hoja de ruta / remitos (PDF)</label>
+                <input type="file" name="pdf_file" id="pdf_file" accept=".pdf" required>
+            </div>
+
+            <button type="submit">Subir archivos</button>
+        </form>
+    </div>
+</body>
+</html>
